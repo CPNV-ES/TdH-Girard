@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="68b62b06592942628180f9de45132697" Name="Diagram1" ZoomLevel="88">
+        <EntityTypeShape EntityType="tdhModel.frauds" Width="5" PointX="4.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="tdhModel.Langues" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="tdhModel.Listes" Width="1.5" PointX="2.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="tdhModel.pse" Width="4.625" PointX="13.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="tdhModel.securities" Width="3.75" PointX="9.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="tdhModel.Traductions" Width="1.5" PointX="1.25" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="tdhModel.FK_Traductions_Langues" ManuallyRouted="false" />
+        <AssociationConnector Association="tdhModel.FK_Traductions_Listes" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

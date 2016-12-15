@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Terre des Hommes</title>
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/toastr")
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/toastr")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqwidgets")
+    
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+    <div id="banner">
+        <a href='@Url.Action("Index", "Home")'>
+            <img src="~/Content/images/logo.png" />
+        </a>
+    </div>
+    <div id="left-side">
+        <nav class="navbar navbar-default" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>-->
+                    <li>@Html.ActionLink("FRAUDS", "Index", "frauds")</li>
+                    <li>@Html.ActionLink("PSE", "Index", "pses")</li>
+                    <li>@Html.ActionLink("SECU", "Index", "securities")</li>
+                    <!-- <li>@Html.ActionLink("Test", "Details", "securities", new { id = 2 }, null)</li> -->
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </div>
+
+
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+</body>
+</html>

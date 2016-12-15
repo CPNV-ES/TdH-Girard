@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<script type="text/javascript">
+    $(document).ready(function ()
+    {
+
+        // prepare the data
+        var source =
+        {
+            dataType: "json",
+            dataFields: [
+                { name: 'ID', type: 'number' },
+                { name: 'date_incident', type: 'date' },
+                { name: 'lieu_incident', type: 'string' },
+                { name: 'zone', type: 'number' },
+                { name: 'pays', type: 'string' },
+                { name: 'gravite_incident', type: 'string' },
+                { name: 'responsabilite_tdh', type: 'string' },
+                { name: 'details_de_lincident', type: 'string' }
+            ],
+            url: '/securities/getSecurities',
+            sortcolumn: 'date_incident',
+            sortdirection: 'desc',
+        };
+
+        var dataAdapter = new $.jqx.dataAdapter(source);
+
+        // create Tree Grid
+        $("#dataTable").jqxGrid(
+        {
+            width: 1550,
+            height: 750,
+            source: dataAdapter,
+            pageSize: 23,
+            theme: 'bootstrap',
+            sortable: true,
+            filterable: true,
+            showfilterrow: true,
+            pageable: true,
+            columns: [
+                { text: '', dataField: 'id', width: 0, hidden: true },
+                { text: "Date", dataField: 'date_incident', width: 100, cellsformat: 'dd.MM.yyyy', filtertype: 'date', },
+                { text: "Lieu", dataField: 'lieu_incident', width: 100 },
+                { text: 'Zone', dataField: 'zone', width: 100 },
+                { text: 'Pays', dataField: 'pays', width: 100 },
+                { text: "Gravité", dataField: 'gravite_incident', width: 100 },
+                { text: "Responsabilité", dataField: 'responsabilite_tdh', width: 100 },
+                { text: "Résumé", dataField: 'details_de_lincident', width: 950 }
+            ]
+        });
+
+        $("#dataTable").jqxGrid('selectionmode', 'singlerow');
+
+
+        $("#dataTable").bind('rowselect', function (event)
+        {
+            window.location = '/securities/Edit/' + event.args.row.ID;
+        })
+
+    });
+</script>
+
+<h3>
+    <strong>LISTE DES RAPPORTS<span class="color"> SECURITE ET SÛRETE  </span></strong><br />
+</h3>
+
+<div id="dataTable"></div>

@@ -1,0 +1,584 @@
+﻿@model TdH_2.Models.pse
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>pse</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.date_incident)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_incident)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lieu_incident)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lieu_incident)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.zone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.zone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pays)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pays)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gravite_incident)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gravite_incident)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.responsabilite_tdh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.responsabilite_tdh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.resume_incident)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.resume_incident)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.violence_physique)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.violence_physique)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.violence_physique_nature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.violence_physique_nature)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.violence_physique_autre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.violence_physique_autre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.violence_sexuelle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.violence_sexuelle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.violence_sexuelle_nature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.violence_sexuelle_nature)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.violence_sexuelle_autre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.violence_sexuelle_autre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.violence_psychologique)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.violence_psychologique)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.violence_psychologique_nature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.violence_psychologique_nature)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.violence_psychologique_autre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.violence_psychologique_autre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.negligence)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.negligence)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.negligence_nature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.negligence_nature)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.negligence_autre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.negligence_autre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.details_de_lincident)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.details_de_lincident)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.victime_enfant_statut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.victime_enfant_statut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.victime_enfant_nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.victime_enfant_nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.victime_enfant_date_de_naissance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.victime_enfant_date_de_naissance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.victime_enfant_age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.victime_enfant_age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.victime_enfant_sexe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.victime_enfant_sexe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.victime_enfant_adresse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.victime_enfant_adresse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.victime_enfant_handicap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.victime_enfant_handicap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.victime_enfant_autre_information_importante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.victime_enfant_autre_information_importante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.agresseur_statut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.agresseur_statut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.agresseur_nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.agresseur_nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.agresseur_position)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.agresseur_position)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.agresseur_age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.agresseur_age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.agresseur_sexe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.agresseur_sexe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.agresseur_statut_familial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.agresseur_statut_familial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.agresseur_nom_de_lemployeur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.agresseur_nom_de_lemployeur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.agresseur_lien_avec_tdh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.agresseur_lien_avec_tdh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.agresseur_lien_avec_lenfant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.agresseur_lien_avec_lenfant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.agresseur_autre_information_importante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.agresseur_autre_information_importante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.personne_signalant_nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personne_signalant_nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.personne_signalant_position)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personne_signalant_position)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.personne_signalant_adresse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personne_signalant_adresse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.personne_signalant_nom_de_lemployeur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personne_signalant_nom_de_lemployeur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.personne_signalant_lien_avec_tdh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personne_signalant_lien_avec_tdh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.personne_signalant_lien_avec_lenfant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personne_signalant_lien_avec_lenfant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.personne_signalant_autre_information_importante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personne_signalant_autre_information_importante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mesures_prises_pour_proteger_lenfant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mesures_prises_pour_proteger_lenfant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mesures_prises_pour_eviter_la_recidive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mesures_prises_pour_eviter_la_recidive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mesures_prises_pour_proteger_laction_de_tdh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mesures_prises_pour_proteger_laction_de_tdh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.informations_supplementaires_quest_ce_que_lenfant_souhaite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.informations_supplementaires_quest_ce_que_lenfant_souhaite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.informations_supplementaires_de_quel_soutien_lenfant_a_t_il_besoin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.informations_supplementaires_de_quel_soutien_lenfant_a_t_il_besoin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.informations_supplementaires_qui_doit_apporter_ce_soutien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.informations_supplementaires_qui_doit_apporter_ce_soutien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.informations_supplementaires_y_a_t_il_dautres_actions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.informations_supplementaires_y_a_t_il_dautres_actions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.informations_supplementaires_qui_quand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.informations_supplementaires_qui_quand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.informations_supplementaires_qui_va_suivre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.informations_supplementaires_qui_va_suivre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.informations_supplementaires_lecons_apprises)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.informations_supplementaires_lecons_apprises)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.recommandations_du_delegue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.recommandations_du_delegue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rapport_rempli_par)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rapport_rempli_par)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_de_lenvoi_au_siege)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_de_lenvoi_au_siege)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rapport_traite_par)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rapport_traite_par)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mise_a_jour_du_cas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mise_a_jour_du_cas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mise_a_jour_du_cas_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mise_a_jour_du_cas_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.a_remplir_par_le_siege_numero_de_lincident)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.a_remplir_par_le_siege_numero_de_lincident)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.a_remplir_par_le_siege_recu_par)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.a_remplir_par_le_siege_recu_par)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.a_remplir_par_le_siege_recu_par_autre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.a_remplir_par_le_siege_recu_par_autre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.a_remplir_par_le_siege_traite_au_siege_par)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.a_remplir_par_le_siege_traite_au_siege_par)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.a_remplir_par_le_siege_mise_a_jour_recommandation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.a_remplir_par_le_siege_mise_a_jour_recommandation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.a_remplir_par_le_siege_date_de_fermeture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.a_remplir_par_le_siege_date_de_fermeture)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.a_remplir_par_le_siege_statut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.a_remplir_par_le_siege_statut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.annee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.annee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.langue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.langue)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

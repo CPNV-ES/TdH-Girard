@@ -1,0 +1,818 @@
+﻿@model TdH_2.Models.securities
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>securities</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.date_incident)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_incident)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lieu_incident)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lieu_incident)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.zone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.zone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pays)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pays)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gravite_incident)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gravite_incident)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.responsabilite_tdh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.responsabilite_tdh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.resume_incident)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.resume_incident)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sante_employe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sante_employe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sante_nature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sante_nature)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sante_autre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sante_autre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.accident_lie_au_deplacement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.accident_lie_au_deplacement)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.accident_lie_au_deplacement_nature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.accident_lie_au_deplacement_nature)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.accident_lie_au_deplacement_autre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.accident_lie_au_deplacement_autre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maintenance_du_bureau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maintenance_du_bureau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maintenance_du_bureau_nature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maintenance_du_bureau_nature)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maintenance_du_bureau_autre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maintenance_du_bureau_autre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.catastrophe_naturelle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.catastrophe_naturelle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.catastrophe_naturelle_nature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.catastrophe_naturelle_nature)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.catastrophe_naturelle_autre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.catastrophe_naturelle_autre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.degat_materiel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.degat_materiel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.degat_materiel_nature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.degat_materiel_nature)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.degat_materiel_autre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.degat_materiel_autre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.surete_autre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.surete_autre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.surete_autre_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.surete_autre_description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.menace)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.menace)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.menace_envers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.menace_envers)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.menace_envers_autre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.menace_envers_autre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.menace_nature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.menace_nature)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.menace_nature_autre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.menace_nature_autre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.agression)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.agression)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.agression_employe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.agression_employe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.agression_nature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.agression_nature)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.agression_autre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.agression_autre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.enlevement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.enlevement)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.enlevement_employe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.enlevement_employe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.enlevement_nature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.enlevement_nature)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.enlevement_autre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.enlevement_autre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vol_intrusion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vol_intrusion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vol_intrusion_nature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vol_intrusion_nature)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vol_intrusion_autre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vol_intrusion_autre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.attaque)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.attaque)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.attaque_nature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.attaque_nature)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.attaque_autre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.attaque_autre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.troubles_publics)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.troubles_publics)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.troubles_publics_nature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.troubles_publics_nature)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.troubles_publics_autre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.troubles_publics_autre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.securite_autre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.securite_autre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.securite_autre_desctiption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.securite_autre_desctiption)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.details_de_lincident)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.details_de_lincident)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.raisons_de_la_presence_de_tdh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.raisons_de_la_presence_de_tdh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mesures_prises_par_la_delegation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mesures_prises_par_la_delegation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.recommandations_du_delegue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.recommandations_du_delegue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.personnes_impliquees_expatrie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personnes_impliquees_expatrie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.personnes_impliquees_consultant_prestataire_expatrie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personnes_impliquees_consultant_prestataire_expatrie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.personnes_impliquees_staff_national_tdh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personnes_impliquees_staff_national_tdh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.personnes_impliquees_consultant_prestataire_local)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personnes_impliquees_consultant_prestataire_local)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.personnes_impliquees_tiers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personnes_impliquees_tiers)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.personnes_impliquees_nombre_total_de_personnes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personnes_impliquees_nombre_total_de_personnes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.implication_exterieure_police)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.implication_exterieure_police)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.implication_exterieure_juge_de_paix)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.implication_exterieure_juge_de_paix)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.implication_exterieure_tiers_population)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.implication_exterieure_tiers_population)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.implication_exterieure_hopital_centre_de_sante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.implication_exterieure_hopital_centre_de_sante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.implication_exterieure_compagnie_dassurance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.implication_exterieure_compagnie_dassurance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.implication_exterieure_aucune)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.implication_exterieure_aucune)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.implication_exterieure_autre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.implication_exterieure_autre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.implication_exterieure_autre_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.implication_exterieure_autre_description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.impact_sur_le_programme_hibernation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.impact_sur_le_programme_hibernation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.impact_sur_le_programme_nb_de_jours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.impact_sur_le_programme_nb_de_jours)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.impact_sur_le_programme_evacuation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.impact_sur_le_programme_evacuation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.impact_sur_le_programme_nb_de_personnes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.impact_sur_le_programme_nb_de_personnes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.impact_sur_le_programme_evacuation_medicale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.impact_sur_le_programme_evacuation_medicale)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.impact_sur_le_programme_nb_de_jours_sans_travailler)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.impact_sur_le_programme_nb_de_jours_sans_travailler)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.impact_sur_le_programme_cout_financier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.impact_sur_le_programme_cout_financier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.impact_sur_le_programme_montant_approximatif)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.impact_sur_le_programme_montant_approximatif)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.impact_sur_le_programme_suivi_judicaire)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.impact_sur_le_programme_suivi_judicaire)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.impact_sur_le_programme_autre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.impact_sur_le_programme_autre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.impact_sur_le_programme_aucun)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.impact_sur_le_programme_aucun)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.impact_sur_le_programme_autre_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.impact_sur_le_programme_autre_description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.incident_demande_suivi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.incident_demande_suivi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.incident_demande_suivi_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.incident_demande_suivi_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.support_necessaire)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.support_necessaire)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.support_necessaire_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.support_necessaire_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.plan_securite_change)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.plan_securite_change)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.plan_securite_envoyer_au_siege)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.plan_securite_envoyer_au_siege)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.plan_securite_envoyer_au_siege_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.plan_securite_envoyer_au_siege_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rapport_rempli_par)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rapport_rempli_par)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_de_lenvoi_au_siege)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_de_lenvoi_au_siege)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rapport_traite_par)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rapport_traite_par)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mise_a_jour_du_cas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mise_a_jour_du_cas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mise_a_jour_du_cas_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mise_a_jour_du_cas_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.a_remplir_par_le_siege_numero_de_lincident)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.a_remplir_par_le_siege_numero_de_lincident)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.a_remplir_par_le_siege_recu_par)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.a_remplir_par_le_siege_recu_par)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.a_remplir_par_le_siege_recu_par_autre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.a_remplir_par_le_siege_recu_par_autre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.a_remplir_par_le_siege_traite_au_siege_par)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.a_remplir_par_le_siege_traite_au_siege_par)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.a_remplir_par_le_siege_mise_a_jour_recommandation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.a_remplir_par_le_siege_mise_a_jour_recommandation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.a_remplir_par_le_siege_statut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.a_remplir_par_le_siege_statut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.a_remplir_par_le_siege_date_de_fermeture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.a_remplir_par_le_siege_date_de_fermeture)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.annee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.annee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.langue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.langue)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
