@@ -156,13 +156,21 @@ namespace TdH_2.Controllers
             TranslateManager translateManager = new TranslateManager(1);
             var pays = translateManager.loadTranslate("pays");
             var zone = translateManager.loadTranslate("zone");
-            var incidents = translateManager.loadTranslate("gravite_incident");
+            var graviteIncidents = translateManager.loadTranslate("gravite_incident");
+            var natureIncidents = translateManager.loadTranslate("nature_de_lincident_nature");
+            var recuPar = translateManager.loadTranslate("a_remplir_par_le_siege_recu_par");
+            var status = translateManager.loadTranslate("a_remplir_par_le_siege_statut");
+
+
             //var responsableTDH = translateManager.loadTranslate("incident");
 
             fraud.listPays = translateManager.convertToSelectList(pays);
             fraud.listZones = translateManager.convertToSelectList(zone);
-            fraud.listGraviteIncidents = translateManager.convertToSelectList(incidents);
-            //fraud.listResponsableTDH = translateManager.convertToSelectList(responsableTDH);
+            fraud.listGraviteIncidents = translateManager.convertToSelectList(graviteIncidents);
+            fraud.listNatureIncidents = translateManager.convertToSelectList(natureIncidents); 
+            fraud.listRecuPar = translateManager.convertToSelectList(recuPar); 
+            fraud.listStatus = translateManager.convertToSelectList(status); 
+
             return fraud;
         }
     }
