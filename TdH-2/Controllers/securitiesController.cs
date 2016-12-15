@@ -52,6 +52,7 @@ namespace TdH_2.Controllers
             {
                 db.securities.Add(securities);
                 db.SaveChanges();
+                TempData["message"] = "La sécurité et sureté a été créée";
                 return RedirectToAction("Index");
             }
 
@@ -84,6 +85,7 @@ namespace TdH_2.Controllers
             {
                 db.Entry(securities).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["message"] = "La sécurité et sureté a été modifiée";
                 return RedirectToAction("Index");
             }
             return View(securities);
@@ -112,6 +114,7 @@ namespace TdH_2.Controllers
             securities securities = db.securities.Find(id);
             db.securities.Remove(securities);
             db.SaveChanges();
+            TempData["message"] = "La sécurité et sureté a été supprimée";
             return RedirectToAction("Index");
         }
 

@@ -52,6 +52,7 @@ namespace TdH_2.Controllers
             {
                 db.pse.Add(pse);
                 db.SaveChanges();
+                TempData["message"] = "Le pse a été crée";
                 return RedirectToAction("Index");
             }
 
@@ -84,6 +85,7 @@ namespace TdH_2.Controllers
             {
                 db.Entry(pse).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["message"] = "Le pse a été mis à jour";
                 return RedirectToAction("Index");
             }
             return View(pse);
@@ -112,6 +114,7 @@ namespace TdH_2.Controllers
             pse pse = db.pse.Find(id);
             db.pse.Remove(pse);
             db.SaveChanges();
+            TempData["message"] = "Le pse a été supprimé";
             return RedirectToAction("Index");
         }
 

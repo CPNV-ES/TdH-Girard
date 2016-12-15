@@ -53,6 +53,7 @@ namespace TdH_2.Controllers
             {
                 db.frauds.Add(frauds);
                 db.SaveChanges();
+                TempData["message"] = "La fraude a été crée";
                 return RedirectToAction("Index");
             }
 
@@ -87,6 +88,7 @@ namespace TdH_2.Controllers
             {
                 db.Entry(frauds).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["message"] = "La fraude a été mise à jour";
                 return RedirectToAction("Index");
             }
 
@@ -116,6 +118,7 @@ namespace TdH_2.Controllers
             frauds frauds = db.frauds.Find(id);
             db.frauds.Remove(frauds);
             db.SaveChanges();
+            TempData["message"] = "La fraude a bien été supprimée";
             return RedirectToAction("Index");
         }
 
