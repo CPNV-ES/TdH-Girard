@@ -75,12 +75,17 @@ namespace TdH.Utils
             fieldsDictionary.Add("zone", "zone");
             fieldsDictionary.Add("pays", "pays");
             fieldsDictionary.Add("gravite_incident", "gravite");
+            fieldsDictionary.Add("responsabilite_tdh", "oui_non");
+            fieldsDictionary.Add("support_necessaire", "oui_non");
+            fieldsDictionary.Add("incident_demande_suivi", "oui_non");
 
             fieldsDictionary.Add("a_remplir_par_le_siege_recu_par", "recu_par");
             fieldsDictionary.Add("a_remplir_par_le_siege_statut", "statut");
 
             //Fraude
             fieldsDictionary.Add("nature_de_lincident_nature", "fraude_nature");
+            fieldsDictionary.Add("preuves_significatives_signalement_superieur_hierarchique", "oui_non");
+            fieldsDictionary.Add("preuves_significatives_une_implication_externe", "oui_non");
             fieldsDictionary.Add("preuves_significatives_avec_quelle_instance", "recours_instance");
 
             //PSE
@@ -88,6 +93,7 @@ namespace TdH.Utils
             fieldsDictionary.Add("violence_sexuelle_nature", "violence_sexuelle_nature");
             fieldsDictionary.Add("violence_psychologique_nature", "violence_psychologique_nature");
             fieldsDictionary.Add("negligence_nature", "negligence");
+            fieldsDictionary.Add("informations_supplementaires_y_a_t_il_dautres_actions", "oui_non");
 
             fieldsDictionary.Add("victime_enfant_statut", "victime_statut");
             fieldsDictionary.Add("victime_enfant_sexe", "sexe");
@@ -112,8 +118,7 @@ namespace TdH.Utils
             fieldsDictionary.Add("vol_intrusion_nature", "vol_intrusion_nature");
             fieldsDictionary.Add("attaque_nature", "attaque_nature");
             fieldsDictionary.Add("troubles_public_nature", "troubles_publics_nature");
-            
-
+            fieldsDictionary.Add("impact_sur_le_programme_suivi_judicaire", "oui_non");
         }
     }
 }
