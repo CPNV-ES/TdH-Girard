@@ -81,124 +81,89 @@
         </div>
         <hr />
 
-        <!-- ZONE DE TEST -->
+        <!-- ATTENTION FAUDRA METTRE LES CHECKBOX !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 
 
         <h3 class="color">NATURE DE L'INCIDENT</h3>
         <div class="form-group">
-            <div class="funkyradio col-md-4">
+            <div class="funkyradio col-md-3 col-md-offset-3">
                 <div class="funkyradio-warning">
                     <input type="checkbox" name="checkbox" id="checkbox1" />
-                    <label for="checkbox1">Violence physique</label>
+                    <label for="checkbox1">@Html.DisplayNameFor(model => model.violence_physique)</label>
                 </div>
             </div>
-            <div class="col-sm-5">
-                @Html.EditorFor(model => model.violence_physique, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.violence_physique, "", new { @class = "text-danger" })
+            <div class="col-sm-2">
+                @Html.EditorFor(model => model.violence_physique_nature, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.violence_physique_nature, "", new { @class = "text-danger" })
             </div>
-            <div class="col-sm-5" style="padding-top:20px;">
-                @Html.EditorFor(model => model.violence_physique, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.violence_physique, "", new { @class = "text-danger" })
+            <br/>
+            <br />
+            <div class="col-sm-2" style="padding-top:20px;">
+                @Html.EditorFor(model => model.violence_physique_autre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.violence_physique_autre, "", new { @class = "text-danger" })
             </div>
         </div>
 
 
-        <!-- PAS TOUCHE EN BAS !-->
-            <div class="form-group">
-                @Html.LabelFor(model => model.violence_physique, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.violence_physique, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.violence_physique, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="funkyradio col-md-3 col-md-offset-3">
+                <div class="funkyradio-warning">
+                    <input type="checkbox" name="checkbox" id="checkbox1" />
+                    <label for="checkbox1">@Html.DisplayNameFor(model => model.violence_sexuelle)</label>
                 </div>
             </div>
+            <div class="col-sm-2">
+                @Html.EditorFor(model => model.violence_sexuelle_nature, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.violence_sexuelle_nature, "", new { @class = "text-danger" })
+            </div>
+            <br />
+            <br />
+            <div class="col-sm-2" style="padding-top:20px;">
+                @Html.EditorFor(model => model.violence_sexuelle_autre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.violence_sexuelle_autre, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.violence_physique_nature, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.violence_physique_nature, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.violence_physique_nature, "", new { @class = "text-danger" })
-                </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.violence_physique_autre, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.violence_physique_autre, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.violence_physique_autre, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="funkyradio col-md-3 col-md-offset-3">
+                <div class="funkyradio-warning">
+                    <input type="checkbox" name="checkbox" id="checkbox1" />
+                    <label for="checkbox1">@Html.DisplayNameFor(model => model.violence_psychologique)</label>
                 </div>
             </div>
+            <div class="col-sm-2">
+                @Html.EditorFor(model => model.violence_psychologique_nature, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.violence_psychologique_nature, "", new { @class = "text-danger" })
+            </div>
+            <br />
+            <br />
+            <div class="col-sm-2" style="padding-top:20px;">
+                @Html.EditorFor(model => model.violence_psychologique_autre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.violence_psychologique_autre, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.violence_sexuelle, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.violence_sexuelle, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.violence_sexuelle, "", new { @class = "text-danger" })
-                </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.violence_sexuelle_nature, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.violence_sexuelle_nature, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.violence_sexuelle_nature, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="funkyradio col-md-3 col-md-offset-3">
+                <div class="funkyradio-warning">
+                    <input type="checkbox" name="checkbox" id="checkbox1" />
+                    <label for="checkbox1">@Html.DisplayNameFor(model => model.negligence)</label>
                 </div>
             </div>
+            <div class="col-sm-2">
+                @Html.EditorFor(model => model.negligence_nature, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.negligence_nature, "", new { @class = "text-danger" })
+            </div>
+            <br />
+            <br />
+            <div class="col-sm-2" style="padding-top:20px;">
+                @Html.EditorFor(model => model.negligence_autre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.negligence_autre, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.violence_sexuelle_autre, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.violence_sexuelle_autre, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.violence_sexuelle_autre, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.violence_psychologique, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.violence_psychologique, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.violence_psychologique, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.violence_psychologique_nature, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.violence_psychologique_nature, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.violence_psychologique_nature, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.violence_psychologique_autre, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.violence_psychologique_autre, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.violence_psychologique_autre, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.negligence, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.negligence, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.negligence, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.negligence_nature, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.negligence_nature, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.negligence_nature, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.negligence_autre, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.negligence_autre, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.negligence_autre, "", new { @class = "text-danger" })
-                </div>
-            </div>
             <hr />
             <!-- PAS TOUCHE EN DESSUS !-->
             
@@ -631,7 +596,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Update" class="btn btn-default" />
+                <input type="submit" value="Enregistrer" class="btn btn-default" />
             </div>
         </div>
     </div>
