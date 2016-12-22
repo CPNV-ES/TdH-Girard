@@ -255,6 +255,7 @@ namespace TdH_2.Models
         public string negligence;
 
         [Display(Name = "Détails de l'incident")]
+        [DataType(DataType.MultilineText)]
         public string details_de_lincident;
 
         [Display(Name = "Status")]

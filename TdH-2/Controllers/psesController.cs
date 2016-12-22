@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using TdH.Utils;
 using TdH_2.Models;
 
 namespace TdH_2.Controllers
@@ -72,7 +73,7 @@ namespace TdH_2.Controllers
             {
                 return HttpNotFound();
             }
-            return View(pse);
+            return View(LoadLists(pse));
         }
 
         // POST: pses/Edit/5
@@ -152,6 +153,39 @@ namespace TdH_2.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+
+        private pse LoadLists(pse pse)
+        {
+            TranslateManager translateManager = new TranslateManager(1);
+            var pays = translateManager.loadTranslate("pays");
+            var zone = translateManager.loadTranslate("zone");
+            var graviteIncidents = translateManager.loadTranslate("gravite_incident");
+            var violencePhysique = translateManager.loadTranslate("violence_physique_nature");
+            var violenceSexual = translateManager.loadTranslate("violence_sexuelle_nature");
+            var violencePsy = translateManager.loadTranslate("violence_psychologique_nature");
+            var violenceNegligence = translateManager.loadTranslate("negligence_nature");
+            var statusChild = translateManager.loadTranslate("victime_enfant_statut");
+            var sexChild = translateManager.loadTranslate("victime_enfant_sexe");
+            var statusAgressor = translateManager.loadTranslate("agresseur_statut");
+            var sexAgressor = translateManager.loadTranslate("agresseur_sexe");
+
+            pse.listPays = translateManager.convertToSelectList(pays);
+            pse.listZones = translateManager.convertToSelectList(zone);
+            pse.listGraviteIncidents = translateManager.convertToSelectList(graviteIncidents);
+            pse.listPhysical = translateManager.convertToSelectList(violencePhysique);
+            pse.listSexual = translateManager.convertToSelectList(violenceSexual);
+            pse.listPsy = translateManager.convertToSelectList(violencePsy);
+            pse.listNegligence = translateManager.convertToSelectList(violenceNegligence);
+            pse.listStatusChild = translateManager.convertToSelectList(statusChild);
+            pse.listSexChild = translateManager.convertToSelectList(sexChild);
+            pse.listStatusAgressor = translateManager.convertToSelectList(statusAgressor);
+            pse.listSexAgressor = translateManager.convertToSelectList(sexAgressor);
+
+
+
+            return pse;
         }
     }
 }

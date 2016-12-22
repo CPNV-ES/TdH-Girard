@@ -171,6 +171,7 @@ namespace TdH_2.Controllers
             var natureIncidents = translateManager.loadTranslate("nature_de_lincident_nature");
             var recuPar = translateManager.loadTranslate("a_remplir_par_le_siege_recu_par");
             var status = translateManager.loadTranslate("a_remplir_par_le_siege_statut");
+            var instance = translateManager.loadTranslate("preuves_significatives_avec_quelle_instance");
 
 
             //var responsableTDH = translateManager.loadTranslate("incident");
@@ -180,7 +181,8 @@ namespace TdH_2.Controllers
             fraud.listGraviteIncidents = translateManager.convertToSelectList(graviteIncidents);
             fraud.listNatureIncidents = translateManager.convertToSelectList(natureIncidents); 
             fraud.listRecuPar = translateManager.convertToSelectList(recuPar); 
-            fraud.listStatus = translateManager.convertToSelectList(status); 
+            fraud.listStatus = translateManager.convertToSelectList(status);
+            fraud.listInstance = translateManager.convertToSelectList(instance);
 
             return fraud;
         }

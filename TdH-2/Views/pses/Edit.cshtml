@@ -41,14 +41,14 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.zone, htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-sm-4">
-                    @Html.EditorFor(model => model.zone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.DropDownListFor(n => n.zone, Model.listZones, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.zone, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.pays, htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-sm-4">
-                    @Html.EditorFor(model => model.pays, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.DropDownListFor(n => n.pays, Model.listPays, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.pays, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -58,14 +58,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.gravite_incident, htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-sm-4">
-                @Html.EditorFor(model => model.gravite_incident, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(n => n.gravite_incident, Model.listGraviteIncidents, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.gravite_incident, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.responsabilite_tdh, htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-sm-4">
-                @Html.EditorFor(model => model.responsabilite_tdh, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Responsable, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.responsabilite_tdh, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -88,13 +88,13 @@
         <div class="form-group">
             <div class="funkyradio col-md-3 col-md-offset-3">
                 <div class="funkyradio-warning">
-                    <input type="checkbox" name="checkbox" id="checkbox1" />
-                    <label for="checkbox1">@Html.DisplayNameFor(model => model.violence_physique)</label>
+                    @Html.EditorFor(model => model.ViolencePhysical, new { @class = "form-control"})
+                    <label for="ViolencePhysical">@Html.DisplayNameFor(model => model.violence_physique)</label>
                 </div>
             </div>
             <div class="col-sm-2">
-                @Html.EditorFor(model => model.violence_physique_nature, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.violence_physique_nature, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(n => n.violence_physique_nature, Model.listPhysical, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.violence_physique_nature, "", new {@class = "text-danger"})
             </div>
             <br/>
             <br />
@@ -108,13 +108,13 @@
         <div class="form-group">
             <div class="funkyradio col-md-3 col-md-offset-3">
                 <div class="funkyradio-warning">
-                    <input type="checkbox" name="checkbox" id="checkbox1" />
-                    <label for="checkbox1">@Html.DisplayNameFor(model => model.violence_sexuelle)</label>
+                    @Html.EditorFor(model => model.ViolenceSexual, new { @class = "form-control" })
+                    <label for="ViolenceSexual">@Html.DisplayNameFor(model => model.violence_sexuelle)</label>
                 </div>
             </div>
             <div class="col-sm-2">
-                @Html.EditorFor(model => model.violence_sexuelle_nature, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.violence_sexuelle_nature, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(n => n.violence_sexuelle_nature, Model.listSexual, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.violence_sexuelle_nature, "", new {@class = "text-danger"})
             </div>
             <br />
             <br />
@@ -128,13 +128,13 @@
         <div class="form-group">
             <div class="funkyradio col-md-3 col-md-offset-3">
                 <div class="funkyradio-warning">
-                    <input type="checkbox" name="checkbox" id="checkbox1" />
-                    <label for="checkbox1">@Html.DisplayNameFor(model => model.violence_psychologique)</label>
+                    @Html.EditorFor(model => model.ViolencePsy, new { @class = "form-control" })
+                    <label for="ViolencePsy">@Html.DisplayNameFor(model => model.violence_psychologique)</label>
                 </div>
             </div>
             <div class="col-sm-2">
-                @Html.EditorFor(model => model.violence_psychologique_nature, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.violence_psychologique_nature, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(n => n.violence_psychologique_nature, Model.listPsy, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.violence_psychologique_nature, "", new {@class = "text-danger"})
             </div>
             <br />
             <br />
@@ -148,13 +148,13 @@
         <div class="form-group">
             <div class="funkyradio col-md-3 col-md-offset-3">
                 <div class="funkyradio-warning">
-                    <input type="checkbox" name="checkbox" id="checkbox1" />
-                    <label for="checkbox1">@Html.DisplayNameFor(model => model.negligence)</label>
+                    @Html.EditorFor(model => model.ViolenceNegligence, new { @class = "form-control" })
+                    <label for="ViolenceNegligence">@Html.DisplayNameFor(model => model.negligence)</label>
                 </div>
             </div>
             <div class="col-sm-2">
-                @Html.EditorFor(model => model.negligence_nature, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.negligence_nature, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(n => n.negligence_nature, Model.listNegligence, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.negligence_nature, "", new {@class = "text-danger"})
             </div>
             <br />
             <br />
@@ -165,7 +165,8 @@
         </div>
 
             <hr />
-            <!-- PAS TOUCHE EN DESSUS !-->
+    <!-- PAS TOUCHE EN DESSUS !-->
+        
             
             <h3 class="color">@Html.LabelFor(model => model.details_de_lincident)</h3>
             <div class="form-group">
@@ -181,8 +182,8 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.victime_enfant_statut, htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-sm-4">
-                    @Html.EditorFor(model => model.victime_enfant_statut, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.victime_enfant_statut, "", new { @class = "text-danger" })
+                    @Html.DropDownListFor(n => n.victime_enfant_statut, Model.listStatusChild, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.victime_enfant_statut, "", new {@class = "text-danger"})
                 </div>
             </div>
 
@@ -213,8 +214,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.victime_enfant_sexe, htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-sm-4">
-                @Html.EditorFor(model => model.victime_enfant_sexe, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.victime_enfant_sexe, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(n => n.victime_enfant_sexe, Model.listSexChild, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.victime_enfant_sexe, "", new {@class = "text-danger"})
             </div>
         </div>
 
@@ -249,8 +250,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.agresseur_statut, htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-sm-4">
-                @Html.EditorFor(model => model.agresseur_statut, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.agresseur_statut, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(n => n.agresseur_statut, Model.listStatusAgressor, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.agresseur_statut, "", new {@class = "text-danger"})
             </div>
         </div>
 
@@ -281,8 +282,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.agresseur_sexe, htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-sm-4">
-                @Html.EditorFor(model => model.agresseur_sexe, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.agresseur_sexe, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(n => n.agresseur_sexe, Model.listSexAgressor, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.agresseur_sexe, "", new {@class = "text-danger"})
             </div>
         </div>
 
