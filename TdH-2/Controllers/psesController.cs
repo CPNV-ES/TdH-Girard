@@ -52,6 +52,7 @@ namespace TdH_2.Controllers
             {
                 db.pse.Add(pse);
                 db.SaveChanges();
+
                 TempData["message"] = "Le pse a été crée";
                 return RedirectToAction("Index");
             }
@@ -84,8 +85,16 @@ namespace TdH_2.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(pse).State = EntityState.Modified;
-                db.SaveChanges();
-                TempData["message"] = "Le pse a été mis à jour";
+                if (db.SaveChanges() == -1)
+                {
+                    TempData["css"] = "danger";
+                    TempData["message"] = "Problème lors de l'enregistrement !";
+                }
+                else
+                {
+                    TempData["css"] = "success";
+                    TempData["message"] = "L'entrée a bien été mise à jour";
+                }
                 return RedirectToAction("Index");
             }
             return View(pse);

@@ -65,5 +65,11 @@
 <h3>
     <strong>LISTE DES RAPPORTS<span class="color"> VIOLATION DE LA SAUVEGARDE DE L'ENFANT </span></strong><br />
 </h3>
-@TempData["message"]
+@if (@TempData["message"] != null)
+{
+    <div class="alert alert-@TempData["css"] alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        @TempData["message"]
+    </div>
+}
 <div id="dataTable"></div>
