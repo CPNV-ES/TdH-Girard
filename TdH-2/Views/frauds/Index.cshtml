@@ -1,71 +1,75 @@
-﻿@{
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using TdH.Utils
+@using TdH_2.Models;
+@using TdH.Utils;
+@model List<frauds>
+@{
     ViewBag.Title = "Index";
 }
 
-<script type="text/javascript">
-    $(document).ready(function ()
-    {
-
-        // prepare the data
-        var source =
-        {
-            dataType: "json",
-            dataFields: [
-                { name: 'id', type: 'number' },
-                { name: 'date_incident', type: 'date' },
-                { name: 'lieu_incident', type: 'string' },
-                { name: 'zone', type: 'number' },
-                { name: 'pays', type: 'string' },
-                { name: 'gravite_incident', type: 'string' },
-                { name: 'responsabilite_tdh', type: 'string' },
-                { name: 'details_de_lincident', type: 'string' }
-            ],
-            url: '/frauds/getFrauds',
-            sortcolumn: 'date_incident',
-            sortdirection: 'desc',
-        };
-
-        var dataAdapter = new $.jqx.dataAdapter(source);
-
-        // create Tree Grid
-        $("#dataTable").jqxGrid(
-        {
-            width: 1550,
-            height: 750,
-            source: dataAdapter,
-            pageSize: 23,
-            theme: 'bootstrap',
-            sortable: true,
-            filterable: true,
-            showfilterrow: true,
-            pageable: true,
-            columns: [
-                { text: '', dataField: 'id', width: 0, hidden: true},
-                { text: "Date", dataField: 'date_incident', width: 100, cellsformat: 'dd.MM.yyyy', filtertype: 'date', },
-                { text: "Lieu", dataField: 'lieu_incident', width: 100 },
-                { text: 'Zone', dataField: 'zone', width: 100 },
-                { text: 'Pays', dataField: 'pays', width: 100 },
-                { text: "Gravité", dataField: 'gravite_incident', width: 100},
-                { text: "Responsabilité", dataField: 'responsabilite_tdh', width: 100 },
-                { text: "Résumé", dataField: 'details_de_lincident', width: 950 }   
-            ]
-        });
-
-        $("#dataTable").jqxGrid('selectionmode', 'singlerow');
-
-
-        $("#dataTable").bind('rowselect', function (event)
-        {
-            window.location = '/frauds/Edit/' + event.args.row.id;
-        })
-        
-    });
-</script>
-
 <h3>
-    <strong>LISTE DES RAPPORTS<span class="color"> FRAUDE / CORRUPTION / VOL </span></strong><br/>
+    <strong>LISTE DES RAPPORTS<span class="color"> FRAUDE / CORRUPTION / VOL </span></strong><br />
 </h3>
 
-@TempData["message"]
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model[0].lieu_incident)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].zone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].pays)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].gravite_incident)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].responsabilite_tdh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].resume_incident)
+        </th>
+      
+        <th></th>
+    </tr>
 
-<div id="dataTable"></div>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.lieu_incident)
+            </td>
+            <td>
+                @TranslateManager.getTranslateFor(item.listZones, item.zone)
+            </td>
+            <td>
+                @TranslateManager.getTranslateFor(item.listPays, item.pays)
+            </td>
+            <td>
+                @TranslateManager.getTranslateFor(item.listGraviteIncidents, item.gravite_incident)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.responsabilite_tdh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.resume_incident)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+Page @(ViewBag.pagination.PageCount < ViewBag.pagination.PageNumber ? 0 : ViewBag.pagination.PageNumber) of @ViewBag.pagination.PageCount
+
+@Html.PagedListPager((IPagedList<frauds>)ViewBag.pagination, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

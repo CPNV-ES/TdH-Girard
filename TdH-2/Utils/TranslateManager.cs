@@ -69,6 +69,26 @@ namespace TdH.Utils
             return new SelectList(translate, "Valeur", "Traduction");
         }
 
+        public static string getTranslateFor(SelectList selectList, byte? matchKey)
+        {
+            String value = "";
+
+            if (matchKey == null)
+            {
+                return "";
+            }
+            else
+            {
+                SelectListItem first = selectList.Where(x => Int32.Parse(x.Value) == (int)matchKey).First();
+                if (first != null)
+                {
+                    value = first.Text;
+                }
+            }
+            return value;
+            
+        }
+
         private void initFieldsDictionary()
         {
             //Generic

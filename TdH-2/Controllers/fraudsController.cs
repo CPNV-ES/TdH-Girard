@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using PagedList;
 using TdH.Utils;
 using TdH_2.Models;
+
 
 namespace TdH_2.Controllers
 {
@@ -16,9 +16,29 @@ namespace TdH_2.Controllers
         private tdhEntities db = new tdhEntities();
 
         // GET: frauds
-        public ActionResult Index()
+        // Install-Package PagedList.Mvc
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(db.frauds.ToList());
+            IOrderedQueryable<frauds> f = db.frauds;
+
+            ViewBag.CurrentSort = sortOrder;
+
+            f =  f.OrderByDescending(s => s.id);
+
+            // Pagination
+            int pageSize = 20;
+            int pageNumber = (page ?? 1);
+
+            IPagedList<frauds> fraudList = f.ToPagedList(pageNumber, pageSize);
+            List<frauds> data = fraudList.ToList();
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                data[i] = LoadLists(data[i]);
+            }
+
+            ViewBag.pagination = fraudList;
+            return View(data);
         }
 
         // GET: frauds/Details/5
@@ -124,20 +144,39 @@ namespace TdH_2.Controllers
 
         public JsonResult getFrauds()
         {
-            var dbResult = db.frauds.ToList();
+            List<frauds> dbResult = db.frauds.ToList();
+            
             var frauds = (from fraud in dbResult
-                             select new
-                             {
-                                 fraud.id,
-                                 fraud.date_incident,
-                                 fraud.lieu_incident,
-                                 fraud.zone,
-                                 fraud.pays,
-                                 fraud.gravite_incident,
-                                 fraud.responsabilite_tdh,
-                                 fraud.details_de_lincident
-                             });
-            return Json(frauds, JsonRequestBehavior.AllowGet);
+                select new
+                {
+                    fraud.id,
+                    fraud.date_incident,
+                    fraud.lieu_incident,
+                    fraud.zone,
+                    fraud.pays,
+                    fraud.gravite_incident,
+                    fraud.responsabilite_tdh,
+                    fraud.details_de_lincident
+                });
+
+            // Load translation
+            TranslateManager t = new TranslateManager(1);
+            List<Traductions> pays = t.loadTranslate("pays");
+
+            var p = (from traduction in pays
+                select new
+                {
+                    traduction.Valeur,
+                    traduction.Traduction
+                });
+           
+            var data = new
+            {
+                frauds = frauds,
+                pouet = p
+            };
+
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
 
@@ -169,7 +208,7 @@ namespace TdH_2.Controllers
             fraud.listGraviteIncidents = translateManager.convertToSelectList(graviteIncidents);
             fraud.listNatureIncidents = translateManager.convertToSelectList(natureIncidents); 
             fraud.listRecuPar = translateManager.convertToSelectList(recuPar); 
-            fraud.listStatus = translateManager.convertToSelectList(status); 
+            fraud.listStatus = translateManager.convertToSelectList(status);
 
             return fraud;
         }
