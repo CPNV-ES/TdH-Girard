@@ -47,7 +47,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.pays, htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-sm-4">
-                    @Html.DropDownListFor(n => n.pays, Model.listPays, new { @class = "form-control" } )
+                    @Html.DropDownListFor(n => n.pays, Model.listPays, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.pays, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -84,7 +84,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.nature_de_lincident_nature, htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-sm-4">
-                @Html.EditorFor(model => model.nature_de_lincident_nature, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(n => n.nature_de_lincident_nature, Model.listNatureIncidents, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.nature_de_lincident_nature, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -313,7 +313,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.a_remplir_par_le_siege_recu_par, htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-sm-4">
-                @Html.EditorFor(model => model.a_remplir_par_le_siege_recu_par, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(n => n.a_remplir_par_le_siege_recu_par, Model.listRecuPar, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.a_remplir_par_le_siege_recu_par, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -355,7 +355,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.a_remplir_par_le_siege_statut, htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-sm-4">
-                @Html.EditorFor(model => model.a_remplir_par_le_siege_statut, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(n => n.a_remplir_par_le_siege_statut, Model.listStatus, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.a_remplir_par_le_siege_statut, "", new { @class = "text-danger" })
             </div>
         </div>

@@ -19,6 +19,13 @@ namespace TdH_2.Models
 
         public SelectList listResponsableTDH { get; set; }
 
+        public SelectList listNatureIncidents { get; set; }
+
+
+        public SelectList listRecuPar { get; set; }
+
+        public SelectList listStatus { get; set; }
+
         public int selectedCountry { get; set; }
         public bool Responsable
         {
