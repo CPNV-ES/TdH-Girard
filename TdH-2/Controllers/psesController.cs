@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using TdH.Utils;
 using TdH_2.Models;
+using PagedList;
 
 namespace TdH_2.Controllers
 {
@@ -16,9 +17,28 @@ namespace TdH_2.Controllers
         private tdhEntities db = new tdhEntities();
 
         // GET: pses
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(db.pse.ToList());
+            IOrderedQueryable<pse> pse = db.pse;
+
+            ViewBag.CurrentSort = sortOrder;
+
+            pse = pse.OrderByDescending(s => s.ID);
+
+            // Pagination
+            int pageSize = 20;
+            int pageNumber = (page ?? 1);
+
+            IPagedList<pse> pseList = pse.ToPagedList(pageNumber, pageSize);
+            List<pse> data = pseList.ToList();
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                data[i] = LoadLists(data[i]);
+            }
+
+            ViewBag.pagination = pseList;
+            return View(data);
         }
 
         // GET: pses/Details/5
