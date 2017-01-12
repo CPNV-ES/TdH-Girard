@@ -41,6 +41,11 @@ namespace TdH.Utils
             fieldsDictionary.TryGetValue(type, out type);
 
             List<Traductions> t = new List<Traductions>();
+
+            Traductions blank = new Traductions();
+            blank.Traduction = "";
+            t.Add(blank);
+
             foreach (Listes current in _listes)
             {
                 if (current.Nom_liste == type)
