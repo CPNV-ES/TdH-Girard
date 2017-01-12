@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using PagedList;
 using TdH.Utils;
 using TdH_2.Models;
+
 
 namespace TdH_2.Controllers
 {
@@ -16,10 +16,31 @@ namespace TdH_2.Controllers
         private tdhEntities db = new tdhEntities();
 
         // GET: frauds
-        public ActionResult Index()
+        // Install-Package PagedList.Mvc
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
 
-            return View(db.frauds.ToList());
+            IOrderedQueryable<frauds> f = db.frauds;
+
+            ViewBag.CurrentSort = sortOrder;
+
+            f =  f.OrderByDescending(s => s.id);
+
+            // Pagination
+            int pageSize = 20;
+            int pageNumber = (page ?? 1);
+
+            IPagedList<frauds> fraudList = f.ToPagedList(pageNumber, pageSize);
+            List<frauds> data = fraudList.ToList();
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                data[i] = LoadLists(data[i]);
+            }
+
+            ViewBag.pagination = fraudList;
+            return View(data);
+
         }
 
         // GET: frauds/Details/5
@@ -132,28 +153,7 @@ namespace TdH_2.Controllers
             return RedirectToAction("Index");
         }
 
-        public JsonResult getFrauds()
-        {
-            var dbResult = db.frauds.ToList();
-
-            var frauds = (from fraud in dbResult
-                             select new
-                             {
-                                 fraud.id,
-                                 fraud.date_incident,
-                                 fraud.lieu_incident,
-                                 fraud.zone,
-                                 fraud.pays,
-                                 fraud.gravite_incident,
-                                 fraud.responsabilite_tdh,
-                                 fraud.details_de_lincident
-                             });
-            return Json(frauds, JsonRequestBehavior.AllowGet);
-        }
-
-
-
-
+    
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -182,7 +182,9 @@ namespace TdH_2.Controllers
             fraud.listNatureIncidents = translateManager.convertToSelectList(natureIncidents); 
             fraud.listRecuPar = translateManager.convertToSelectList(recuPar); 
             fraud.listStatus = translateManager.convertToSelectList(status);
+
             fraud.listInstance = translateManager.convertToSelectList(instance);
+
 
             return fraud;
         }
