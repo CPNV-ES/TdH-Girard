@@ -75,6 +75,7 @@ namespace TdH_2.Controllers
             {
                 db.frauds.Add(frauds);
                 db.SaveChanges();
+
                 TempData["message"] = "La fraude a été crée";
                 return RedirectToAction("Index");
             }
