@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using TdH.Utils;
 using TdH_2.Models;
 
 namespace TdH_2.Controllers
@@ -71,7 +72,11 @@ namespace TdH_2.Controllers
             {
                 return HttpNotFound();
             }
-            return View(securities);
+
+            securities.selectedCountry = (int)securities.pays;
+
+            return View(LoadLists(securities));
+
         }
 
         // POST: securities/Edit/5
@@ -151,6 +156,55 @@ namespace TdH_2.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private securities LoadLists(securities security)
+        {
+            TranslateManager translateManager = new TranslateManager(1);
+            var pays = translateManager.loadTranslate("pays");
+            var zone = translateManager.loadTranslate("zone");
+            var graviteIncidents = translateManager.loadTranslate("gravite_incident");
+            var santeEmploye = translateManager.loadTranslate("sante_employe");
+            var santeNature = translateManager.loadTranslate("sante_nature");
+            var accidentTravel  = translateManager.loadTranslate("accident_lie_au_deplacement_nature");
+            var maintenanceOffice = translateManager.loadTranslate("maintenance_du_bureau_nature");
+            var naturalDisaster = translateManager.loadTranslate("catastrophe_naturelle_nature");
+            var materials = translateManager.loadTranslate("degat_materiel_nature");
+            var threatAgainst = translateManager.loadTranslate("menace_envers");
+            var threatNature = translateManager.loadTranslate("menace_nature");
+            var aggressionEmploye = translateManager.loadTranslate("agression_employe");
+            var aggressionNature = translateManager.loadTranslate("agression_nature");
+            var kidnappingEmploye = translateManager.loadTranslate("enlevement_employe");
+            var kidnappingNature = translateManager.loadTranslate("enlevement_nature");
+            var steal = translateManager.loadTranslate("vol_intrusion_nature");
+            var attack = translateManager.loadTranslate("attaque_nature");
+            var publicDisorder = translateManager.loadTranslate("troubles_publics_nature");
+            var receivedBy = translateManager.loadTranslate("a_remplir_par_le_siege_recu_par");
+            var status = translateManager.loadTranslate("a_remplir_par_le_siege_statut");
+
+
+            security.listPays = translateManager.convertToSelectList(pays);
+            security.listZones = translateManager.convertToSelectList(zone);
+            security.listGraviteIncidents = translateManager.convertToSelectList(graviteIncidents);
+            security.listHealthEmploye = translateManager.convertToSelectList(santeEmploye);
+            security.listHealthNature = translateManager.convertToSelectList(santeNature);
+            security.listAccident = translateManager.convertToSelectList(accidentTravel);
+            security.listMaintenance = translateManager.convertToSelectList(maintenanceOffice);
+            security.listDisaster = translateManager.convertToSelectList(naturalDisaster);
+            security.listMaterials = translateManager.convertToSelectList(materials);
+            security.listThreatsAgain = translateManager.convertToSelectList(threatAgainst);
+            security.listThreatsNature = translateManager.convertToSelectList(threatNature);
+            security.listAgressionEmployee = translateManager.convertToSelectList(aggressionEmploye);
+            security.listAgressionNature = translateManager.convertToSelectList(aggressionNature);
+            security.listKidnappingEmployee = translateManager.convertToSelectList(kidnappingEmploye);
+            security.listKidnappingNature = translateManager.convertToSelectList(kidnappingNature);
+            security.listStealNature = translateManager.convertToSelectList(steal);
+            security.listAttackNature = translateManager.convertToSelectList(attack);
+            security.listPublicTroubleNature = translateManager.convertToSelectList(publicDisorder);
+            security.ReceiveBy = translateManager.convertToSelectList(receivedBy);
+            security.listStatus = translateManager.convertToSelectList(status);
+        
+            return security;
         }
     }
 }
