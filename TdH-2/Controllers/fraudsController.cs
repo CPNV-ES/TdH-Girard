@@ -86,6 +86,25 @@ namespace TdH_2.Controllers
                             break;
                     }
                 }
+
+                /*
+                 * 
+                 * 
+            _likeSearch["lieu_incident"] = "";
+            _likeSearch["zone"] = "";
+            _likeSearch["pays"] = "";
+            _likeSearch["gravite_incident"] = "";
+            _likeSearch["responsabilite_tdh"] = "";
+            _likeSearch["resume_incident"] = "";
+                 */
+
+              
+
+
+
+
+
+
                 bag.inverseSortOrder(sortOrder);
                 f = f.ThenByDescending(s => s.date_incident);
             }
