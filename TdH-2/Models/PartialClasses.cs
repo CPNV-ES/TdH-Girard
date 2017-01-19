@@ -364,6 +364,5 @@ namespace TdH_2.Models
 
         public SelectList listStatus { get; set; }
 
-
     }
 }

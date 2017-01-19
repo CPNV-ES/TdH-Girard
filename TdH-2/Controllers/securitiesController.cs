@@ -26,7 +26,7 @@ namespace TdH_2.Controllers
             s = s.OrderByDescending(so => so.ID);
 
             // Pagination
-            int pageSize = 20;
+            int pageSize = 15;
             int pageNumber = (page ?? 1);
 
             IPagedList<securities> securitiesList = s.ToPagedList(pageNumber, pageSize);

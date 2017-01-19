@@ -46,6 +46,10 @@ h3
     text-transform:uppercase;
 }
 
+.table {
+    margin-bottom: 0px;
+}
+
 #left-side
 {
     height:915px;
@@ -56,12 +60,11 @@ h3
 
 .container-fluid
 {
-    margin-top:50px;
+    margin-top:20px;
     background-color:#fff;
     margin-left:250px;
     margin-right:50px;
-    padding:25px;
-    position:absolute;
+    padding:10px;
 }
 
 h3 > label

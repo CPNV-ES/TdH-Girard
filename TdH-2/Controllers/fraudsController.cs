@@ -91,7 +91,7 @@ namespace TdH_2.Controllers
             }
 
             // Pagination
-            int pageSize = 20;
+            int pageSize = 15;
             int pageNumber = (page ?? 1);
 
 

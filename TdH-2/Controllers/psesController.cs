@@ -26,7 +26,7 @@ namespace TdH_2.Controllers
             pse = pse.OrderByDescending(s => s.ID);
 
             // Pagination
-            int pageSize = 20;
+            int pageSize = 15;
             int pageNumber = (page ?? 1);
 
             IPagedList<pse> pseList = pse.ToPagedList(pageNumber, pageSize);

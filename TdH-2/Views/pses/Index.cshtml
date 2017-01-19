@@ -18,7 +18,7 @@
         @TempData["message"]
     </div>
 }
-<table class="table table-responsive table-hover">
+<table class="table table-responsive table-hover table-condensed">
     <thead>
         <th>
             @Html.DisplayNameFor(model => model[0].lieu_incident)
@@ -63,8 +63,8 @@
                 <td>
                     @Html.Editor("resume_incident", new { htmlAttributes = new { @class = "form-control" } })
                 </td>
-                <td>
-                    <input type="submit" value="Rechercher" />
+                <td colspan="2">
+                    <input type="submit" value="Rechercher" class="btn btn-default" />
                 </td>
             </tr>
         </thead>
