@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using TdH.Utils;
 using TdH_2.Models;
 
@@ -16,9 +17,28 @@ namespace TdH_2.Controllers
         private tdhEntities db = new tdhEntities();
 
         // GET: securities
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(db.securities.ToList());
+            IOrderedQueryable<securities> s = db.securities;
+
+            ViewBag.CurrentSort = sortOrder;
+
+            s = s.OrderByDescending(so => so.ID);
+
+            // Pagination
+            int pageSize = 20;
+            int pageNumber = (page ?? 1);
+
+            IPagedList<securities> securitiesList = s.ToPagedList(pageNumber, pageSize);
+            List<securities> data = securitiesList.ToList();
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                data[i] = LoadLists(data[i]);
+            }
+
+            ViewBag.pagination = securitiesList;
+            return View(data);
         }
 
         // GET: securities/Details/5

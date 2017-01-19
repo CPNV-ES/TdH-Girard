@@ -1,12 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Web.WebPages;
 using PagedList;
 using TdH.Utils;
 using TdH_2.Models;
+using TdH_2.Utils;
+using TdH_2.ViewsModels;
 
 
 namespace TdH_2.Controllers
@@ -17,18 +22,78 @@ namespace TdH_2.Controllers
 
         // GET: frauds
         // Install-Package PagedList.Mvc
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        // TODO: Refactor !
+        public ActionResult Index(string sortOrder, string currentFilter,  string searchLieuIncident, string searchZone,  string searchPays, string searchGraviteIncident, string searchResponsabiliteTdh, string searchResumeIncident, int? page, FraudsViewBag bag)
         {
 
             IOrderedQueryable<frauds> f = db.frauds;
 
-            ViewBag.CurrentSort = sortOrder;
+            if (!bag.IslikeSearch)
+            {
+                FraudsViewBag sessionBag = SessionUtils.Get<FraudsViewBag>("frauds_bag");
+                if (sessionBag != null)
+                {
+                    bag = sessionBag;
+                }
+            }
+            else
+            {
+                page = 1;
+            }
+            
+            
+            if (String.IsNullOrEmpty(sortOrder))
+            {
+                f = f.OrderByDescending(s => s.date_incident);
+            }
+            else
+            {
+                String target = sortOrder.Split('-')[0];
 
-            f =  f.OrderByDescending(s => s.id);
+                if (sortOrder.Split('-')[1] == "asc")
+                {
+                    switch (target)
+                    {
+                        case "zone":
+                            f = f.OrderBy(fraud => fraud.zone);
+                            break;
+                        case "pays":
+                            f = f.OrderBy(fraud => fraud.pays);
+                            break;
+                        case "gravite_incident":
+                            f = f.OrderBy(fraud => fraud.gravite_incident);
+                            break;
+                        case "responsabilite_tdh":
+                            f = f.OrderBy(fraud => fraud.responsabilite_tdh);
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (target)
+                    {
+                        case "zone":
+                            f = f.OrderByDescending(fraud => fraud.zone);
+                            break;
+                        case "pays":
+                            f = f.OrderByDescending(fraud => fraud.pays);
+                            break;
+                        case "gravite_incident":
+                            f = f.OrderByDescending(fraud => fraud.gravite_incident);
+                            break;
+                        case "responsabilite_tdh":
+                            f = f.OrderByDescending(fraud => fraud.responsabilite_tdh);
+                            break;
+                    }
+                }
+                bag.inverseSortOrder(sortOrder);
+                f = f.ThenByDescending(s => s.date_incident);
+            }
 
             // Pagination
             int pageSize = 20;
             int pageNumber = (page ?? 1);
+
 
             IPagedList<frauds> fraudList = f.ToPagedList(pageNumber, pageSize);
             List<frauds> data = fraudList.ToList();
@@ -39,7 +104,18 @@ namespace TdH_2.Controllers
             }
 
             ViewBag.pagination = fraudList;
-            return View(data);
+            ViewBag.CurrentSort = sortOrder;
+
+            bag.Pagination = fraudList;
+            bag.Fraud = data;
+
+            if (bag.IslikeSearch)
+            {
+                SessionUtils.Set("frauds_bag", bag);   
+            }
+            
+
+            return View(bag);
 
         }
 
@@ -120,7 +196,7 @@ namespace TdH_2.Controllers
                     TempData["css"] = "success";
                     TempData["message"] = "L'entrée a bien été mise à jour";
                 }
-                
+
                 return RedirectToAction("Index");
             }
 
@@ -154,7 +230,7 @@ namespace TdH_2.Controllers
             return RedirectToAction("Index");
         }
 
-    
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -180,8 +256,8 @@ namespace TdH_2.Controllers
             fraud.listPays = translateManager.convertToSelectList(pays);
             fraud.listZones = translateManager.convertToSelectList(zone);
             fraud.listGraviteIncidents = translateManager.convertToSelectList(graviteIncidents);
-            fraud.listNatureIncidents = translateManager.convertToSelectList(natureIncidents); 
-            fraud.listRecuPar = translateManager.convertToSelectList(recuPar); 
+            fraud.listNatureIncidents = translateManager.convertToSelectList(natureIncidents);
+            fraud.listRecuPar = translateManager.convertToSelectList(recuPar);
             fraud.listStatus = translateManager.convertToSelectList(status);
 
             fraud.listInstance = translateManager.convertToSelectList(instance);
