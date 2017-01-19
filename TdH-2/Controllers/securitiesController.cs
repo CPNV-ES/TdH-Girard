@@ -146,8 +146,16 @@ namespace TdH_2.Controllers
         {
             securities securities = db.securities.Find(id);
             db.securities.Remove(securities);
-            db.SaveChanges();
-            TempData["message"] = "La sécurité et sureté a été supprimée";
+            if (db.SaveChanges() == -1)
+            {
+                TempData["css"] = "danger";
+                TempData["message"] = "Problème lors de la suppression !";
+            }
+            else
+            {
+                TempData["css"] = "success";
+                TempData["message"] = "L'entrée a bien été supprimée";
+            }
             return RedirectToAction("Index");
         }
 

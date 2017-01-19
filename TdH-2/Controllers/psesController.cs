@@ -143,8 +143,16 @@ namespace TdH_2.Controllers
         {
             pse pse = db.pse.Find(id);
             db.pse.Remove(pse);
-            db.SaveChanges();
-            TempData["message"] = "Le pse a été supprimé";
+            if (db.SaveChanges() == -1)
+            {
+                TempData["css"] = "danger";
+                TempData["message"] = "Problème lors de la suppression !";
+            }
+            else
+            {
+                TempData["css"] = "success";
+                TempData["message"] = "L'entrée a bien été supprimée";
+            }
             return RedirectToAction("Index");
         }
 
