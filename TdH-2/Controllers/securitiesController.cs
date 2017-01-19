@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using System.Web.WebPages;
 using PagedList;
 using TdH.Utils;
 using TdH_2.Models;
+using TdH_2.Utils;
+using TdH_2.ViewsModels;
 
 namespace TdH_2.Controllers
 {
@@ -17,28 +21,97 @@ namespace TdH_2.Controllers
         private tdhEntities db = new tdhEntities();
 
         // GET: securities
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchLieuIncident, string searchZone, string searchPays, string searchGraviteIncident, string searchResponsabiliteTdh, string searchResumeIncident, int? page, SecurityViewBag bag)
         {
-            IOrderedQueryable<securities> s = db.securities;
+            IQueryable<securities> s = db.securities;
 
-            ViewBag.CurrentSort = sortOrder;
+            if (!bag.IslikeSearch)
+            {
+                SecurityViewBag sessionBag = SessionUtils.Get<SecurityViewBag>("security_bag");
+                if (sessionBag != null)
+                {
+                    bag = sessionBag;
+                }
+            }
+            else
+            {
+                page = 1;
+            }
 
-            s = s.OrderByDescending(so => so.ID);
+
+            if (String.IsNullOrEmpty(sortOrder))
+            {
+                s = s.OrderByDescending(security => security.date_incident);
+            }
+            else
+            {
+                String target = sortOrder.Split('-')[0];
+
+                if (sortOrder.Split('-')[1] == "asc")
+                {
+                    switch (target)
+                    {
+                        case "zone":
+                            s = s.OrderBy(security => security.zone);
+                            break;
+                        case "pays":
+                            s = s.OrderBy(security => security.pays);
+                            break;
+                        case "gravite_incident":
+                            s = s.OrderBy(security => security.gravite_incident);
+                            break;
+                        case "responsabilite_tdh":
+                            s = s.OrderBy(security => security.responsabilite_tdh);
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (target)
+                    {
+                        case "zone":
+                            s = s.OrderByDescending(security => security.zone);
+                            break;
+                        case "pays":
+                            s = s.OrderByDescending(security => security.pays);
+                            break;
+                        case "gravite_incident":
+                            s = s.OrderByDescending(security => security.gravite_incident);
+                            break;
+                        case "responsabilite_tdh":
+                            s = s.OrderByDescending(security => security.responsabilite_tdh);
+                            break;
+                    }
+                }
+                bag.inverseSortOrder(sortOrder);
+            }
 
             // Pagination
             int pageSize = 15;
             int pageNumber = (page ?? 1);
 
-            IPagedList<securities> securitiesList = s.ToPagedList(pageNumber, pageSize);
-            List<securities> data = securitiesList.ToList();
+
+            IPagedList<securities> securitesList = s.ToPagedList(pageNumber, pageSize);
+            List<securities> data = securitesList.ToList();
 
             for (int i = 0; i < data.Count; i++)
             {
                 data[i] = LoadLists(data[i]);
             }
 
-            ViewBag.pagination = securitiesList;
-            return View(data);
+            ViewBag.pagination = securitesList;
+            ViewBag.CurrentSort = sortOrder;
+
+            bag.Pagination = securitesList;
+            bag.Security = data;
+
+            if (bag.IslikeSearch)
+            {
+                SessionUtils.Set("security_bag", bag);
+            }
+
+
+            return View(bag);
         }
 
         // GET: securities/Details/5

@@ -3,11 +3,19 @@
 @using TdH.Utils
 @using TdH_2.Models;
 @using TdH.Utils;
-@model List<securities>
+@using System;
+@model TdH_2.ViewsModels.SecurityViewBag
 @{
     ViewBag.Title = "Index";
+    if (ViewBag.CurrentSort != null)
+    {
+        ViewBag.SortIcon = "<i class=\"fa " + (ViewBag.CurrentSort.Split('-')[1] == "asc" ? "fa-sort-asc" : "fa-sort-desc") + "\" style=\"float:right;\" />";
+    }
+    else
+    {
+        ViewBag.CurrentSort = "";
+    }
 }
-
 <h3>
     <strong>LISTE DES RAPPORTS<span class="color"> SECURITE </span></strong><br />
 </h3>
@@ -22,28 +30,59 @@
 <table class="table table-responsive table-hover table-condensed">
     <thead>
         <th>
-            @Html.DisplayNameFor(model => model[0].lieu_incident)
+            @Html.DisplayNameFor(model => model.Security[0].lieu_incident)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model[0].zone)
+            @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Security[0].zone).ToString()), "Index", new { sortOrder = Model.SortParams("zone") })
+            @(ViewBag.CurrentSort.Split('-')[0] == "zone" ? Html.Raw(ViewBag.SortIcon) : "")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model[0].pays)
+            @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Security[0].pays).ToString()), "Index", new { sortOrder = Model.SortParams("pays") })
+            @(ViewBag.CurrentSort.Split('-')[0] == "pays" ? Html.Raw(ViewBag.SortIcon) : "")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model[0].gravite_incident)
+            @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Security[0].gravite_incident).ToString()), "Index", new { sortOrder = Model.SortParams("gravite_incident") })
+            @(ViewBag.CurrentSort.Split('-')[0] == "gravite_incident" ? Html.Raw(ViewBag.SortIcon) : "")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model[0].responsabilite_tdh)
+            @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Security[0].responsabilite_tdh).ToString()), "Index", new { sortOrder = Model.SortParams("responsabilite_tdh") })
+            @(ViewBag.CurrentSort.Split('-')[0] == "responsabilite_tdh" ? Html.Raw(ViewBag.SortIcon) : "")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model[0].resume_incident)
+            @Html.DisplayNameFor(model => model.Security[0].resume_incident)
         </th>
 
         <th></th>
     </thead>
+    @using (Html.BeginForm())
+    {
+        <thead>
+            <td>
+                @Html.EditorFor(model => model.LikeSearch["lieu_incident"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["lieu_incident"] } })
+            </td>
+            <td>
+                @Html.DropDownListFor(n => n.LikeSearch["zone"], Model.Security[0].listZones, new { @class = "form-control" })
+            </td>
+            <td>
+                @Html.DropDownListFor(n => n.LikeSearch["pays"], Model.Security[0].listPays, new { @class = "form-control" })
+            </td>
+            <td>
+                @Html.DropDownListFor(n => n.LikeSearch["gravite_incident"], Model.Security[0].listGraviteIncidents, new { @class = "form-control" })
+            </td>
+            <td>
+                <!-- TODO: CHECK BYTE -->
+                @Html.EditorFor(model => model.LikeSearch["responsabilite_tdh"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["responsabilite_tdh"] } })
+            </td>
+            <td>
+                @Html.EditorFor(model => model.LikeSearch["resume_incident"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["resume_incident"] } })
+            </td>
+            <td colspan="2">
+                <input type="submit" value="Rechercher" class="btn btn-default" />
+            </td>
+        </thead>
+    }
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.Security)
     {
         <tbody>
             <tr>
