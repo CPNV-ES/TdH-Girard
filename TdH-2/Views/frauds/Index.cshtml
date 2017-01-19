@@ -1,4 +1,5 @@
 ﻿@using PagedList;
+@using System;
 @using PagedList.Mvc;
 @using TdH.Utils
 @using TdH_2.Models;
@@ -6,8 +7,15 @@
 @model TdH_2.ViewsModels.FraudsViewBag
 @{
     ViewBag.Title = "Index";
+    if (ViewBag.CurrentSort != null)
+    {
+        ViewBag.SortIcon = "<i class=\"fa " + (ViewBag.CurrentSort.Split('-')[1] == "asc" ? "fa-sort-asc" : "fa-sort-desc") + "\" style=\"float:right;\" />";
+    }
+    else
+    {
+        ViewBag.CurrentSort = "";
+    }
 }
-
 <h3>
     <strong>LISTE DES RAPPORTS<span class="color"> FRAUDE / CORRUPTION / VOL </span></strong><br />
 </h3>
@@ -27,15 +35,19 @@
         </th>
         <th>
             @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Fraud[0].zone).ToString()), "Index", new { sortOrder = Model.SortParams("zone")})
+            @(ViewBag.CurrentSort.Split('-')[0] == "zone" ? Html.Raw(ViewBag.SortIcon) : "")
         </th>
         <th>
             @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Fraud[0].pays).ToString()), "Index", new { sortOrder = Model.SortParams("pays") })
+            @(ViewBag.CurrentSort.Split('-')[0] == "pays" ? Html.Raw(ViewBag.SortIcon) : "")
         </th>
         <th>
             @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Fraud[0].gravite_incident).ToString()), "Index", new { sortOrder = Model.SortParams("gravite_incident") })
+            @(ViewBag.CurrentSort.Split('-')[0] == "gravite_incident" ? Html.Raw(ViewBag.SortIcon) : "")
         </th>
         <th>
             @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Fraud[0].responsabilite_tdh).ToString()), "Index", new { sortOrder = Model.SortParams("responsabilite_tdh") })
+            @(ViewBag.CurrentSort.Split('-')[0] == "responsabilite_tdh" ? Html.Raw(ViewBag.SortIcon) : "")
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Fraud[0].resume_incident)
