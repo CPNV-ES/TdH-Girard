@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Net;
 using System.Web.Mvc;
+using System.Web.Routing;
 using System.Web.Security;
 using System.Web.WebPages;
 using PagedList;
@@ -26,7 +27,7 @@ namespace TdH_2.Controllers
         public ActionResult Index(string sortOrder, string currentFilter,  string searchLieuIncident, string searchZone,  string searchPays, string searchGraviteIncident, string searchResponsabiliteTdh, string searchResumeIncident, int? page, FraudsViewBag bag)
         {
 
-            IOrderedQueryable<frauds> f = db.frauds;
+            IQueryable<frauds> f = db.frauds;
 
             if (!bag.IslikeSearch)
             {
@@ -86,27 +87,7 @@ namespace TdH_2.Controllers
                             break;
                     }
                 }
-
-                /*
-                 * 
-                 * 
-            _likeSearch["lieu_incident"] = "";
-            _likeSearch["zone"] = "";
-            _likeSearch["pays"] = "";
-            _likeSearch["gravite_incident"] = "";
-            _likeSearch["responsabilite_tdh"] = "";
-            _likeSearch["resume_incident"] = "";
-                 */
-
-              
-
-
-
-
-
-
                 bag.inverseSortOrder(sortOrder);
-                f = f.ThenByDescending(s => s.date_incident);
             }
 
             // Pagination

@@ -59,19 +59,20 @@
     {
         <thead>
             <td>
-                @Html.EditorFor(model => model.LikeSearch["lieu_incident"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["lieu_incident"] } })
+                @Html.EditorFor(model => model.LikeSearch["lieu_incident"], new {htmlAttributes = new {@class = "form-control", @Value = Model.LikeSearch["lieu_incident"]}})
             </td>
             <td>
-                @Html.EditorFor(model => model.LikeSearch["zone"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["zone"] } })
+                @Html.DropDownListFor(n => n.LikeSearch["zone"], Model.Fraud[0].listZones, new { @class = "form-control" })
             </td>
             <td>
-                @Html.EditorFor(model => model.LikeSearch["pays"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["pays"] } })
+                @Html.DropDownListFor(n => n.LikeSearch["pays"], Model.Fraud[0].listPays, new { @class = "form-control" })
             </td>
             <td>
-                @Html.EditorFor(model => model.LikeSearch["gravite_incident"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["gravite_incident"] } })
+                @Html.DropDownListFor(n => n.LikeSearch["gravite_incident"], Model.Fraud[0].listGraviteIncidents, new { @class = "form-control" })
             </td>
             <td>
-                @Html.EditorFor(model => model.LikeSearch["responsabilite_tdh"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["responsabilite_tdh"] } })
+                <!-- TODO: CHECK BYTE -->
+                @Html.EditorFor(model => model.LikeSearch["responsabilite_tdh"], new {htmlAttributes = new {@class = "form-control", @Value = Model.LikeSearch["responsabilite_tdh"]}})
             </td>
             <td>
                 @Html.EditorFor(model => model.LikeSearch["resume_incident"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["resume_incident"] } })
