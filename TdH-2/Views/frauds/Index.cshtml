@@ -3,7 +3,7 @@
 @using TdH.Utils
 @using TdH_2.Models;
 @using TdH.Utils;
-@model List<frauds>
+@model TdH_2.ViewsModels.FraudsViewBag
 @{
     ViewBag.Title = "Index";
 }
@@ -19,31 +19,58 @@
         @TempData["message"]
     </div>
 }
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model[0].lieu_incident)
+            @Html.DisplayNameFor(model => model.Fraud[0].lieu_incident)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model[0].zone)
+            @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Fraud[0].zone).ToString()), "Index", new { sortOrder = Model.SortParams("zone")})
         </th>
         <th>
-            @Html.DisplayNameFor(model => model[0].pays)
+            @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Fraud[0].pays).ToString()), "Index", new { sortOrder = Model.SortParams("pays") })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model[0].gravite_incident)
+            @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Fraud[0].gravite_incident).ToString()), "Index", new { sortOrder = Model.SortParams("gravite_incident") })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model[0].responsabilite_tdh)
+            @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Fraud[0].responsabilite_tdh).ToString()), "Index", new { sortOrder = Model.SortParams("responsabilite_tdh") })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model[0].resume_incident)
+            @Html.DisplayNameFor(model => model.Fraud[0].resume_incident)
         </th>
-      
+
         <th></th>
     </tr>
+    @using (Html.BeginForm())
+    {
+        <tr>
+            <td>
+                @Html.EditorFor(model => model.LikeSearch["lieu_incident"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["lieu_incident"] } })
+            </td>
+            <td>
+                @Html.EditorFor(model => model.LikeSearch["zone"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["zone"] } })
+            </td>
+            <td>
+                @Html.EditorFor(model => model.LikeSearch["pays"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["pays"] } })
+            </td>
+            <td>
+                @Html.EditorFor(model => model.LikeSearch["gravite_incident"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["gravite_incident"] } })
+            </td>
+            <td>
+                @Html.EditorFor(model => model.LikeSearch["responsabilite_tdh"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["responsabilite_tdh"] } })
+            </td>
+            <td>
+                @Html.EditorFor(model => model.LikeSearch["resume_incident"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["resume_incident"] } })
+            </td>
+            <td>
+                <input type="submit" value="Rechercher" />
+            </td>
+        </tr>
+    }
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.Fraud)
     {
         <tr>
             <td>
@@ -65,8 +92,8 @@
                 @Html.DisplayFor(modelItem => item.resume_incident)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                @Html.ActionLink("Edit", "Edit", new {id = item.id}) |
+                @Html.ActionLink("Delete", "Delete", new {id = item.id})
             </td>
         </tr>
     }
@@ -75,5 +102,5 @@
 <br />
 Page @(ViewBag.pagination.PageCount < ViewBag.pagination.PageNumber ? 0 : ViewBag.pagination.PageNumber) of @ViewBag.pagination.PageCount
 
-@Html.PagedListPager((IPagedList<frauds>)ViewBag.pagination, page => Url.Action("Index",
+@Html.PagedListPager((IPagedList<frauds>)Model.Pagination, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
