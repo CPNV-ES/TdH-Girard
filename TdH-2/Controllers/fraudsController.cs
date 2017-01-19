@@ -26,7 +26,7 @@ namespace TdH_2.Controllers
         public ActionResult Index(string sortOrder, string currentFilter,  string searchLieuIncident, string searchZone,  string searchPays, string searchGraviteIncident, string searchResponsabiliteTdh, string searchResumeIncident, int? page, FraudsViewBag bag)
         {
 
-            IOrderedQueryable<frauds> f = db.frauds;
+            DbSet<frauds> f = db.frauds;
 
             if (!bag.IslikeSearch)
             {
@@ -44,7 +44,7 @@ namespace TdH_2.Controllers
             
             if (String.IsNullOrEmpty(sortOrder))
             {
-                f = f.OrderByDescending(s => s.date_incident);
+                f = f.OrderByDescending(s => s.date_incident) as DbSet<frauds>;
             }
             else
             {
@@ -55,16 +55,16 @@ namespace TdH_2.Controllers
                     switch (target)
                     {
                         case "zone":
-                            f = f.OrderBy(fraud => fraud.zone);
+                            f = f.OrderBy(fraud => fraud.zone) as DbSet<frauds>;
                             break;
                         case "pays":
-                            f = f.OrderBy(fraud => fraud.pays);
+                            f = f.OrderBy(fraud => fraud.pays) as DbSet<frauds>;
                             break;
                         case "gravite_incident":
-                            f = f.OrderBy(fraud => fraud.gravite_incident);
+                            f = f.OrderBy(fraud => fraud.gravite_incident) as DbSet<frauds>;
                             break;
                         case "responsabilite_tdh":
-                            f = f.OrderBy(fraud => fraud.responsabilite_tdh);
+                            f = f.OrderBy(fraud => fraud.responsabilite_tdh) as DbSet<frauds>;
                             break;
                     }
                 }
@@ -73,21 +73,43 @@ namespace TdH_2.Controllers
                     switch (target)
                     {
                         case "zone":
-                            f = f.OrderByDescending(fraud => fraud.zone);
+                            f = f.OrderByDescending(fraud => fraud.zone) as DbSet<frauds>;
                             break;
                         case "pays":
-                            f = f.OrderByDescending(fraud => fraud.pays);
+                            f = f.OrderByDescending(fraud => fraud.pays) as DbSet<frauds>;
                             break;
                         case "gravite_incident":
-                            f = f.OrderByDescending(fraud => fraud.gravite_incident);
+                            f = f.OrderByDescending(fraud => fraud.gravite_incident) as DbSet<frauds>;
                             break;
                         case "responsabilite_tdh":
-                            f = f.OrderByDescending(fraud => fraud.responsabilite_tdh);
+                            f = f.OrderByDescending(fraud => fraud.responsabilite_tdh) as DbSet<frauds>;
                             break;
                     }
                 }
+
+                /*
+                 * 
+                 * 
+            _likeSearch["lieu_incident"] = "";
+            _likeSearch["zone"] = "";
+            _likeSearch["pays"] = "";
+            _likeSearch["gravite_incident"] = "";
+            _likeSearch["responsabilite_tdh"] = "";
+            _likeSearch["resume_incident"] = "";
+                 */
+
+                if (bag.LikeSearch["lieu_incident"] != "")
+                {
+                    f = (DbSet<frauds>) f.Where(fraud => fraud.lieu_incident.Contains(bag.LikeSearch["lieu_incident"]));
+                }
+
+
+
+
+
+
                 bag.inverseSortOrder(sortOrder);
-                f = f.ThenByDescending(s => s.date_incident);
+                f = (DbSet<frauds>) f.ThenByDescending(s => s.date_incident);
             }
 
             // Pagination
