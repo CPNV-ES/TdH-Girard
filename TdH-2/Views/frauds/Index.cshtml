@@ -28,8 +28,8 @@
     </div>
 }
 
-<table class="table">
-    <tr>
+<table class="table table-responsive table-hover">
+    <thead>
         <th>
             @Html.DisplayNameFor(model => model.Fraud[0].lieu_incident)
         </th>
@@ -54,10 +54,10 @@
         </th>
 
         <th></th>
-    </tr>
+    </thead>
     @using (Html.BeginForm())
     {
-        <tr>
+        <thead>
             <td>
                 @Html.EditorFor(model => model.LikeSearch["lieu_incident"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["lieu_incident"] } })
             </td>
@@ -76,38 +76,42 @@
             <td>
                 @Html.EditorFor(model => model.LikeSearch["resume_incident"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["resume_incident"] } })
             </td>
-            <td>
-                <input type="submit" value="Rechercher" />
-            </td>
-        </tr>
+        <td colspan="2">
+            <input type="submit" value="Rechercher" class="btn btn-default" />
+        </td>
+        </thead>
     }
 
     @foreach (var item in Model.Fraud)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.lieu_incident)
-            </td>
-            <td>
-                @TranslateManager.getTranslateFor(item.listZones, item.zone)
-            </td>
-            <td>
-                @TranslateManager.getTranslateFor(item.listPays, item.pays)
-            </td>
-            <td>
-                @TranslateManager.getTranslateFor(item.listGraviteIncidents, item.gravite_incident)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.responsabilite_tdh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.resume_incident)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {id = item.id}) |
-                @Html.ActionLink("Delete", "Delete", new {id = item.id})
-            </td>
-        </tr>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lieu_incident)
+                </td>
+                <td>
+                    @TranslateManager.getTranslateFor(item.listZones, item.zone)
+                </td>
+                <td>
+                    @TranslateManager.getTranslateFor(item.listPays, item.pays)
+                </td>
+                <td>
+                    @TranslateManager.getTranslateFor(item.listGraviteIncidents, item.gravite_incident)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.responsabilite_tdh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.resume_incident)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.id }, new { @class = "fa fa-pencil-square-o fa-2x" })
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Delete", new { id = item.id }, new { @class = "fa fa-times fa-2x" })
+                </td>
+            </tr>
+        </tbody>
     }
 
 </table>

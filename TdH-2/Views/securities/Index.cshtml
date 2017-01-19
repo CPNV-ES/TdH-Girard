@@ -19,8 +19,8 @@
         @TempData["message"]
     </div>
 }
-<table class="table">
-    <tr>
+<table class="table table-responsive table-hover">
+    <thead>
         <th>
             @Html.DisplayNameFor(model => model[0].lieu_incident)
         </th>
@@ -41,34 +41,38 @@
         </th>
 
         <th></th>
-    </tr>
+    </thead>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.lieu_incident)
-            </td>
-            <td>
-                @TranslateManager.getTranslateFor(item.listZones, item.zone)
-            </td>
-            <td>
-                @TranslateManager.getTranslateFor(item.listPays, item.pays)
-            </td>
-            <td>
-                @TranslateManager.getTranslateFor(item.listGraviteIncidents, item.gravite_incident)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.responsabilite_tdh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.resume_incident)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
-        </tr>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lieu_incident)
+                </td>
+                <td>
+                    @TranslateManager.getTranslateFor(item.listZones, item.zone)
+                </td>
+                <td>
+                    @TranslateManager.getTranslateFor(item.listPays, item.pays)
+                </td>
+                <td>
+                    @TranslateManager.getTranslateFor(item.listGraviteIncidents, item.gravite_incident)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.responsabilite_tdh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.resume_incident)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.ID }, new { @class = "fa fa-pencil-square-o fa-2x" })
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Delete", new { id = item.ID }, new { @class = "fa fa-times fa-2x" })
+                </td>
+            </tr>
+        </tbody>
     }
 
 </table>

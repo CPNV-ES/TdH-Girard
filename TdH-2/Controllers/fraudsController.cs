@@ -244,8 +244,16 @@ namespace TdH_2.Controllers
         {
             frauds frauds = db.frauds.Find(id);
             db.frauds.Remove(frauds);
-            db.SaveChanges();
-            TempData["message"] = "La fraude a bien été supprimée";
+            if (db.SaveChanges() == -1)
+            {
+                TempData["css"] = "danger";
+                TempData["message"] = "Problème lors de la suppression !";
+            }
+            else
+            {
+                TempData["css"] = "success";
+                TempData["message"] = "L'entrée a bien été supprimée";
+            }
             return RedirectToAction("Index");
         }
 
@@ -268,9 +276,6 @@ namespace TdH_2.Controllers
             var recuPar = translateManager.loadTranslate("a_remplir_par_le_siege_recu_par");
             var status = translateManager.loadTranslate("a_remplir_par_le_siege_statut");
             var instance = translateManager.loadTranslate("preuves_significatives_avec_quelle_instance");
-
-
-            //var responsableTDH = translateManager.loadTranslate("incident");
 
             fraud.listPays = translateManager.convertToSelectList(pays);
             fraud.listZones = translateManager.convertToSelectList(zone);
