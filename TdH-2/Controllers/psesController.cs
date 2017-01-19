@@ -190,6 +190,7 @@ namespace TdH_2.Controllers
             var sexChild = translateManager.loadTranslate("victime_enfant_sexe");
             var statusAgressor = translateManager.loadTranslate("agresseur_statut");
             var sexAgressor = translateManager.loadTranslate("agresseur_sexe");
+            var status = translateManager.loadTranslate("a_remplir_par_le_siege_statut");
 
             pse.listPays = translateManager.convertToSelectList(pays);
             pse.listZones = translateManager.convertToSelectList(zone);
@@ -202,6 +203,8 @@ namespace TdH_2.Controllers
             pse.listSexChild = translateManager.convertToSelectList(sexChild);
             pse.listStatusAgressor = translateManager.convertToSelectList(statusAgressor);
             pse.listSexAgressor = translateManager.convertToSelectList(sexAgressor);
+            pse.listSexAgressor = translateManager.convertToSelectList(sexAgressor);
+            pse.listStatus = translateManager.convertToSelectList(status);
 
 
 

@@ -121,6 +121,8 @@ namespace TdH_2.Models
 
         public SelectList listSexAgressor { get; set; }
 
+        public SelectList listStatus { get; set; }
+
     }
 
     [MetadataType(typeof(securitiesMetadata))]
