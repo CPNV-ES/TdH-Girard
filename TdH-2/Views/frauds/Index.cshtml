@@ -64,9 +64,9 @@
             <td>
                 @Html.EditorFor(model => model.LikeSearch["resume_incident"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["resume_incident"] } })
             </td>
-            <td>
-                <input type="submit" value="Rechercher" class="btn btn-default" />
-            </td>
+        <td colspan="2">
+            <input type="submit" value="Rechercher" class="btn btn-default" />
+        </td>
         </thead>
     }
 
@@ -93,8 +93,10 @@
                     @Html.DisplayFor(modelItem => item.resume_incident)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                    @Html.ActionLink(" ", "Edit", new { id = item.id }, new { @class = "fa fa-pencil-square-o fa-2x" })
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Delete", new { id = item.id }, new { @class = "fa fa-times fa-2x" })
                 </td>
             </tr>
         </tbody>

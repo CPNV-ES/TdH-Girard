@@ -65,8 +65,10 @@
                     @Html.DisplayFor(modelItem => item.resume_incident)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    @Html.ActionLink(" ", "Edit", new { id = item.ID }, new { @class = "fa fa-pencil-square-o fa-2x" })
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Delete", new { id = item.ID }, new { @class = "fa fa-times fa-2x" })
                 </td>
             </tr>
         </tbody>
