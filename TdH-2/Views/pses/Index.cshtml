@@ -2,8 +2,7 @@
 @using PagedList.Mvc;
 @using TdH.Utils
 @using TdH_2.Models;
-@using TdH.Utils;
-@model List<pse>
+@model TdH_2.ViewsModels.PseViewBag
 @{
     ViewBag.Title = "Index";
 }
@@ -20,48 +19,48 @@
 }
 <table class="table table-responsive table-hover">
     <thead>
-        <th>
-            @Html.DisplayNameFor(model => model[0].lieu_incident)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model[0].zone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model[0].pays)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model[0].gravite_incident)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model[0].responsabilite_tdh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model[0].resume_incident)
-        </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Pse[0].lieu_incident)
+    </th>
+    <th>
+        @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Pse[0].zone).ToString()), "Index", new { sortOrder = Model.SortParams("zone") })
+    </th>
+    <th>
+        @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Pse[0].pays).ToString()), "Index", new { sortOrder = Model.SortParams("pays") })
+    </th>
+    <th>
+        @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Pse[0].gravite_incident).ToString()), "Index", new { sortOrder = Model.SortParams("gravite_incident") })
+    </th>
+    <th>
+        @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Pse[0].responsabilite_tdh).ToString()), "Index", new { sortOrder = Model.SortParams("responsabilite_tdh") })
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Pse[0].resume_incident)
+    </th>
 
-        <th></th>
+    <th></th>
     </thead>
     @using (Html.BeginForm())
     {
         <thead>
             <tr>
                 <td>
-                    @Html.Editor("lieu_incident", new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.LikeSearch["lieu_incident"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["lieu_incident"] } })
                 </td>
                 <td>
-                    @Html.DropDownListFor(n => n[0].zone, Model[0].listZones, new { @class = "form-control" })
+                    @Html.DropDownListFor(n => n.LikeSearch["zone"], Model.Pse[0].listZones, new { @class = "form-control" })
                 </td>
                 <td>
-                    @Html.DropDownListFor(n => n[0].pays, Model[0].listPays, new { @class = "form-control" })
+                    @Html.DropDownListFor(n => n.LikeSearch["pays"], Model.Pse[0].listPays, new { @class = "form-control" })
                 </td>
                 <td>
-                    @Html.DropDownListFor(n => n[0].gravite_incident, Model[0].listGraviteIncidents, new { @class = "form-control" })
+                    @Html.DropDownListFor(n => n.LikeSearch["gravite_incident"], Model.Pse[0].listGraviteIncidents, new { @class = "form-control" })
                 </td>
                 <td>
                     -
                 </td>
                 <td>
-                    @Html.Editor("resume_incident", new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.LikeSearch["resume_incident"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["resume_incident"] } })
                 </td>
                 <td>
                     <input type="submit" value="Rechercher" />
@@ -69,9 +68,9 @@
             </tr>
         </thead>
     }
-   
 
-    @foreach (var item in Model)
+
+    @foreach (var item in Model.Pse)
     {
         <tbody>
             <tr>

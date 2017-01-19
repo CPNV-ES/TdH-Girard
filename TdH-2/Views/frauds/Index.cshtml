@@ -30,53 +30,52 @@
 
 <table class="table table-responsive table-hover">
     <thead>
-        <th>
-            @Html.DisplayNameFor(model => model.Fraud[0].lieu_incident)
-        </th>
-        <th>
-            @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Fraud[0].zone).ToString()), "Index", new { sortOrder = Model.SortParams("zone")})
-            @(ViewBag.CurrentSort.Split('-')[0] == "zone" ? Html.Raw(ViewBag.SortIcon) : "")
-        </th>
-        <th>
-            @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Fraud[0].pays).ToString()), "Index", new { sortOrder = Model.SortParams("pays") })
-            @(ViewBag.CurrentSort.Split('-')[0] == "pays" ? Html.Raw(ViewBag.SortIcon) : "")
-        </th>
-        <th>
-            @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Fraud[0].gravite_incident).ToString()), "Index", new { sortOrder = Model.SortParams("gravite_incident") })
-            @(ViewBag.CurrentSort.Split('-')[0] == "gravite_incident" ? Html.Raw(ViewBag.SortIcon) : "")
-        </th>
-        <th>
-            @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Fraud[0].responsabilite_tdh).ToString()), "Index", new { sortOrder = Model.SortParams("responsabilite_tdh") })
-            @(ViewBag.CurrentSort.Split('-')[0] == "responsabilite_tdh" ? Html.Raw(ViewBag.SortIcon) : "")
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fraud[0].resume_incident)
-        </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Fraud[0].lieu_incident)
+    </th>
+    <th>
+        @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Fraud[0].zone).ToString()), "Index", new { sortOrder = Model.SortParams("zone") })
+        @(ViewBag.CurrentSort.Split('-')[0] == "zone" ? Html.Raw(ViewBag.SortIcon) : "")
+    </th>
+    <th>
+        @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Fraud[0].pays).ToString()), "Index", new { sortOrder = Model.SortParams("pays") })
+        @(ViewBag.CurrentSort.Split('-')[0] == "pays" ? Html.Raw(ViewBag.SortIcon) : "")
+    </th>
+    <th>
+        @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Fraud[0].gravite_incident).ToString()), "Index", new { sortOrder = Model.SortParams("gravite_incident") })
+        @(ViewBag.CurrentSort.Split('-')[0] == "gravite_incident" ? Html.Raw(ViewBag.SortIcon) : "")
+    </th>
+    <th>
+        @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayNameFor(model => model.Fraud[0].responsabilite_tdh).ToString()), "Index", new { sortOrder = Model.SortParams("responsabilite_tdh") })
+        @(ViewBag.CurrentSort.Split('-')[0] == "responsabilite_tdh" ? Html.Raw(ViewBag.SortIcon) : "")
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Fraud[0].resume_incident)
+    </th>
 
-        <th></th>
+    <th></th>
     </thead>
     @using (Html.BeginForm())
     {
         <thead>
-            <td>
-                @Html.EditorFor(model => model.LikeSearch["lieu_incident"], new {htmlAttributes = new {@class = "form-control", @Value = Model.LikeSearch["lieu_incident"]}})
-            </td>
-            <td>
-                @Html.DropDownListFor(n => n.LikeSearch["zone"], Model.Fraud[0].listZones, new { @class = "form-control" })
-            </td>
-            <td>
-                @Html.DropDownListFor(n => n.LikeSearch["pays"], Model.Fraud[0].listPays, new { @class = "form-control" })
-            </td>
-            <td>
-                @Html.DropDownListFor(n => n.LikeSearch["gravite_incident"], Model.Fraud[0].listGraviteIncidents, new { @class = "form-control" })
-            </td>
-            <td>
-                <!-- TODO: CHECK BYTE -->
-                @Html.EditorFor(model => model.LikeSearch["responsabilite_tdh"], new {htmlAttributes = new {@class = "form-control", @Value = Model.LikeSearch["responsabilite_tdh"]}})
-            </td>
-            <td>
-                @Html.EditorFor(model => model.LikeSearch["resume_incident"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["resume_incident"] } })
-            </td>
+        <td>
+            @Html.EditorFor(model => model.LikeSearch["lieu_incident"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["lieu_incident"] } })
+        </td>
+        <td>
+            @Html.DropDownListFor(n => n.LikeSearch["zone"], Model.Fraud[0].listZones, new { @class = "form-control" })
+        </td>
+        <td>
+            @Html.DropDownListFor(n => n.LikeSearch["pays"], Model.Fraud[0].listPays, new { @class = "form-control" })
+        </td>
+        <td>
+            @Html.DropDownListFor(n => n.LikeSearch["gravite_incident"], Model.Fraud[0].listGraviteIncidents, new { @class = "form-control" })
+        </td>
+        <td>
+            -
+        </td>
+        <td>
+            @Html.EditorFor(model => model.LikeSearch["resume_incident"], new { htmlAttributes = new { @class = "form-control", @Value = Model.LikeSearch["resume_incident"] } })
+        </td>
         <td colspan="2">
             <input type="submit" value="Rechercher" class="btn btn-default" />
         </td>

@@ -24,7 +24,7 @@ namespace TdH_2.Controllers
         // GET: frauds
         // Install-Package PagedList.Mvc
         // TODO: Refactor !
-        public ActionResult Index(string sortOrder, string currentFilter,  string searchLieuIncident, string searchZone,  string searchPays, string searchGraviteIncident, string searchResponsabiliteTdh, string searchResumeIncident, int? page, FraudsViewBag bag)
+        public ActionResult Index(string sortOrder, int? page, FraudsViewBag bag)
         {
 
             IQueryable<frauds> f = db.frauds;
@@ -93,7 +93,6 @@ namespace TdH_2.Controllers
             // Pagination
             int pageSize = 20;
             int pageNumber = (page ?? 1);
-
 
             IPagedList<frauds> fraudList = f.ToPagedList(pageNumber, pageSize);
             List<frauds> data = fraudList.ToList();

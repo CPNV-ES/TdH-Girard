@@ -213,6 +213,7 @@
     <Compile Include="Utils\TranslateManager.cs" />
     <Compile Include="ViewsModels\SecurityViewBag.cs" />
     <Compile Include="ViewsModels\FraudsViewBag.cs" />
+    <Compile Include="ViewsModels\PseViewBag.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

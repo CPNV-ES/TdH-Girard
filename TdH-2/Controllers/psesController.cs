@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using TdH.Utils;
 using TdH_2.Models;
 using PagedList;
+using TdH_2.Utils;
+using TdH_2.ViewsModels;
 
 namespace TdH_2.Controllers
 {
@@ -17,19 +19,76 @@ namespace TdH_2.Controllers
         private tdhEntities db = new tdhEntities();
 
         // GET: pses
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index(string sortOrder, int? page, PseViewBag bag)
         {
-            IOrderedQueryable<pse> pse = db.pse;
+            IQueryable<pse> p = db.pse;
 
-            ViewBag.CurrentSort = sortOrder;
+            if (!bag.IslikeSearch)
+            {
+                PseViewBag sessionBag = SessionUtils.Get<PseViewBag>("pse_bag");
+                if (sessionBag != null)
+                {
+                    bag = sessionBag;
+                }
+            }
+            else
+            {
+                page = 1;
+            }
 
-            pse = pse.OrderByDescending(s => s.ID);
+
+            if (String.IsNullOrEmpty(sortOrder))
+            {
+                p = p.OrderByDescending(s => s.date_incident);
+            }
+            else
+            {
+                String target = sortOrder.Split('-')[0];
+
+                if (sortOrder.Split('-')[1] == "asc")
+                {
+                    switch (target)
+                    {
+                        case "zone":
+                            p = p.OrderBy(pse => pse.zone);
+                            break;
+                        case "pays":
+                            p = p.OrderBy(pse => pse.pays);
+                            break;
+                        case "gravite_incident":
+                            p = p.OrderBy(pse => pse.gravite_incident);
+                            break;
+                        case "responsabilite_tdh":
+                            p = p.OrderBy(pse => pse.responsabilite_tdh);
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (target)
+                    {
+                        case "zone":
+                            p = p.OrderByDescending(pse => pse.zone);
+                            break;
+                        case "pays":
+                            p = p.OrderByDescending(pse => pse.pays);
+                            break;
+                        case "gravite_incident":
+                            p = p.OrderByDescending(pse => pse.gravite_incident);
+                            break;
+                        case "responsabilite_tdh":
+                            p = p.OrderByDescending(pse => pse.responsabilite_tdh);
+                            break;
+                    }
+                }
+                bag.inverseSortOrder(sortOrder);
+            }
 
             // Pagination
             int pageSize = 20;
             int pageNumber = (page ?? 1);
 
-            IPagedList<pse> pseList = pse.ToPagedList(pageNumber, pageSize);
+            IPagedList<pse> pseList = p.ToPagedList(pageNumber, pageSize);
             List<pse> data = pseList.ToList();
 
             for (int i = 0; i < data.Count; i++)
@@ -38,7 +97,18 @@ namespace TdH_2.Controllers
             }
 
             ViewBag.pagination = pseList;
-            return View(data);
+            ViewBag.CurrentSort = sortOrder;
+
+            bag.Pagination = pseList;
+            bag.Pse = data;
+
+            if (bag.IslikeSearch)
+            {
+                SessionUtils.Set("pse_bag", bag);
+            }
+
+
+            return View(bag);
         }
 
         // GET: pses/Details/5
