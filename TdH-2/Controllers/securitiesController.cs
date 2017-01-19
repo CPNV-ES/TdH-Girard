@@ -36,8 +36,13 @@ namespace TdH_2.Controllers
             else
             {
                 page = 1;
+                if (bag.LikeSearch["gravite_incident"] != "")
+                {
+                    System.Diagnostics.Debug.WriteLine("TOTO");
+                    System.Diagnostics.Debug.WriteLine(bag.LikeSearch["gravite_incident"]);
+                    s.Where(m => m.gravite_incident == int.Parse(bag.LikeSearch["gravite_incident"]));
+                }
             }
-
 
             if (String.IsNullOrEmpty(sortOrder))
             {
@@ -109,7 +114,6 @@ namespace TdH_2.Controllers
             {
                 SessionUtils.Set("security_bag", bag);
             }
-
 
             return View(bag);
         }
