@@ -45,7 +45,7 @@ namespace TdH_2.Controllers
             
             if (String.IsNullOrEmpty(sortOrder))
             {
-                f = f.OrderByDescending(s => s.date_incident);
+                f = f.OrderByDescending(fraud => fraud.date_incident);
             }
             else
             {
